@@ -14,9 +14,6 @@
  * - about
  */
 
-$app = require 'private.php';
-$database = $app['database'];
-
 require 'views/about.view.php';
 
 /**

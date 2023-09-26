@@ -1,5 +1,14 @@
 <?php
 /**
+ * Server variabelen
+ * SERVER
+ * GET
+ * POST
+ */
+
+
+
+/**
  * Routing
  * Waar in de applicatie ben je?
  *
@@ -13,6 +22,7 @@
  *      - hobby
  * - about
  */
+
 
 
 

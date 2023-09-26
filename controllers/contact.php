@@ -14,10 +14,7 @@
  * - about
  */
 
-$app = require 'private.php';
-$database = $app['database'];
-die(var_dump($app));;
-require 'views/index.view.php';
+require 'views/contact.view.php';
 
 /**
  * PDO - connect to database
