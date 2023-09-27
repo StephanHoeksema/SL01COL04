@@ -16,7 +16,7 @@
 
 
 
-require 'views/index.view.php';
+require 'views/skills.view.php';
 
 /**
  * PDO - connect to database
