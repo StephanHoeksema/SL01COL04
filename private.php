@@ -5,7 +5,7 @@ return [
         "servername" => "localhost",
         "username" => "root",
         "drowssap" => "Blub!976",
-        "dbname" => "sh2023"
+        "dbname" => "profileApp"
     ],
     "information" => [
         "email" => "info@windesheim.nl"

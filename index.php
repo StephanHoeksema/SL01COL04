@@ -16,13 +16,13 @@ $routes = [
     "/skills" => "controllers/skills.php",
 
 ];
-
-if(array_key_exists($_SERVER['REQUEST_URI'], $routes)) {
-    require $routes[$_SERVER['REQUEST_URI']];
-} else {
-    echo "404";
-}
-
+//
+//if(array_key_exists($_SERVER['REQUEST_URI'], $routes)) {
+//    require $routes[$_SERVER['REQUEST_URI']];
+//} else {
+//    echo "404";
+//}
+//
 
 /**
  * Routing
@@ -56,10 +56,32 @@ try {
     );
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully";
+//    echo "Connected successfully";
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
 
-
+$sql = "SELECT * FROM users";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+echo "<table>";
+foreach ($users as $user) {
+    echo "<tr>";
+    echo "<td>" . $user['username'] . "</td>
+          <td>" . "<a href='hobbies.php?id=". $user['id'] ."'>hobbies</a>" . "</td>";
+    echo "<tr>";
+}
+echo "</table>";
 //require 'views/index.view.php';
+
+
+
+
+
+
+
+
+
+
+
