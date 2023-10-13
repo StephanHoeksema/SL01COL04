@@ -24,23 +24,6 @@ $routes = [
 //}
 //
 
-/**
- * Routing
- * Waar in de applicatie ben je?
- *
- * Voor het gebruik gaan we er gebruik van maken van de volgende opbouw
- * - index(home)
- * - contact
- * - details
- *      - profiel
- *      - cijfers
- *      - ervaringen
- *      - hobby
- * - about
- */
-
-
-
 
 /**
  * PDO - connect to database
@@ -56,7 +39,6 @@ try {
     );
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//    echo "Connected successfully";
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
@@ -65,15 +47,8 @@ $sql = "SELECT * FROM users";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-echo "<table>";
-foreach ($users as $user) {
-    echo "<tr>";
-    echo "<td>" . $user['username'] . "</td>
-          <td>" . "<a href='hobbies.php?id=". $user['id'] ."'>hobbies</a>" . "</td>";
-    echo "<tr>";
-}
-echo "</table>";
-//require 'views/index.view.php';
+
+require 'views/index.view.php';
 
 
 

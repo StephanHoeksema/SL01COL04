@@ -23,10 +23,11 @@ try {
 
 $id = $_GET['id'];
 
-$sql = "select * from hobbies where userid = $id";
+$sql = "select * from profiles where id = $id";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
-$hobbies = $stmt->fetchAll(PDO::FETCH_ASSOC);
-foreach ($hobbies as $hobby) {
-    echo $hobby['hobby'] . "<br>";
-}
+$profile = $stmt->fetch(PDO::FETCH_ASSOC);
+
+echo "<H1>PROFIEL van " . $profile['firstname'] . "</H1>"
+     . $profile['email'] . "<br>";
+
