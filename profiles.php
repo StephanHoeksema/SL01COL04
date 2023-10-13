@@ -28,6 +28,8 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 $profile = $stmt->fetch(PDO::FETCH_ASSOC);
 
-echo "<H1>PROFIEL van " . $profile['firstname'] . "</H1>"
-     . $profile['email'] . "<br>";
-
+if ($profile != false ) {
+    require 'views/profiles.view.php';
+} else {
+    echo "Leeg";
+}

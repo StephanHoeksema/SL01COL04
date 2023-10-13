@@ -27,6 +27,5 @@ $sql = "select * from hobbies where userid = $id";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $hobbies = $stmt->fetchAll(PDO::FETCH_ASSOC);
-foreach ($hobbies as $hobby) {
-    echo $hobby['hobby'] . "<br>";
-}
+
+require 'views/hobbies.view.php';
