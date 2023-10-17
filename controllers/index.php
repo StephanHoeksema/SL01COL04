@@ -1,20 +1,14 @@
 <?php
-/**
- * Routing
- * Waar in de applicatie ben je?
- *
- * Voor het gebruik gaan we er gebruik van maken van de volgende opbouw
- * - index(home)
- * - contact
- * - details
- *      - profiel
- *      - cijfers
- *      - ervaringen
- *      - hobby
- * - about
- */
 
+$sql = "
+    select users.id, users.username, MIN(profiles.id) AS profileId, MIN(hobbies.id) AS hobbyId
+    from users
+    left join  profiles on profiles.id = users.id
+    left join hobbies on hobbies.userid = users.id
+    group by users.id
+";
 
+$users = $qb->customSelect($sql);
 
 require 'views/index.view.php';
 

@@ -1,13 +1,17 @@
 <?php
 /**
- * Server variabelen
- * SERVER
- * GET
- * POST
+ * Auto loading voor Classes
  */
-$App = require 'private.php';
-$dbconn = $App['database'];
+require 'vendor/autoload.php';
 
+/** @var  $qb
+ * Query builder with database connection
+ * */
+$qb = new QueryBuilder(new Connection());
+
+/** @var  $routes
+ * Routes van de applicatie
+ * */
 $routes = [
     "/" => "controllers/index.php",
     "/about" => "controllers/about.php",
@@ -16,46 +20,15 @@ $routes = [
     "/skills" => "controllers/skills.php",
 
 ];
-//
-//if(array_key_exists($_SERVER['REQUEST_URI'], $routes)) {
-//    require $routes[$_SERVER['REQUEST_URI']];
-//} else {
-//    echo "404";
-//}
-//
-
 
 /**
- * PDO - connect to database
- *
+ * Laden van de juiste controller
  */
-
-
-try {
-    $conn = new PDO(
-        "mysql:host=$dbconn[servername];dbname=$dbconn[dbname]",
-        $dbconn['username'],
-        $dbconn['drowssap']
-    );
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+if(array_key_exists($_SERVER['REQUEST_URI'], $routes)) {
+    require $routes[$_SERVER['REQUEST_URI']];
+} else {
+    echo "404";
 }
-
-$sql = "
-SELECT *
-FROM users
-";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-require 'views/index.view.php';
-
-
-
-
 
 
 

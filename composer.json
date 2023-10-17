@@ -1,0 +1,17 @@
+{
+    "name": "stephanhoeksema/sl01col04",
+    "description": "Profile app",
+    "type": "project",
+    "autoload": {
+        "classmap": ["./"]
+    },
+    "authors": [
+        {
+            "name": "Stephan Paul Hoeksema",
+            "email": "s.hoeksema@windesheim.nl"
+        }
+    ],
+    "require": {
+      "ext-pdo": "*"
+    }
+}
