@@ -1,3 +1,11 @@
+.users {
+    margin-left: 1.5em;
+}
+
+p {
+    margin-left: 3em;
+}
+
 
 .footer {
     position: fixed;
@@ -7,4 +15,23 @@
     background-color: darkslateblue;
     color: white;
     text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    border: 2px solid #000000;
+    margin: 10px;
+}
+.grid > div {
+    font-size: 30px;
+    padding: .5em;
+    background: gold;
+    text-align: center;
+}
+.auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+.auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }

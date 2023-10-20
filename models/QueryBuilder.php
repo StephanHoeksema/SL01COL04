@@ -21,7 +21,7 @@ class QueryBuilder
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
-            $result = $stmt->fetchAll(); // assuming $result == true
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC); // assuming $result == true
             return $result;
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
@@ -33,6 +33,8 @@ class QueryBuilder
      * SELECT based on table and condition provided
      * */
     function select($tbl, $cond='') {
+
+
         $sql = "SELECT * FROM $tbl";
         if ($cond!='') {
             $sql .= " WHERE $cond ";
@@ -110,7 +112,7 @@ class QueryBuilder
     /** Method softdelet
      * update based on table, removing created_at value and the condition
      * */
-    function update($tbl, $arr, $cond) {
+    function softdelete($tbl, $arr, $cond) {
         $sql = "UPDATE `$tbl` SET created_at IS NULL WHERE " . $cond;
 
         try {

@@ -2,8 +2,8 @@
 /**
  * Auto loading voor Classes
  */
-require 'vendor/autoload.php';
-
+require 'core/Connection.php';
+require 'models/QueryBuilder.php';
 /** @var  $qb
  * Query builder with database connection
  * */
@@ -14,6 +14,10 @@ $qb = new QueryBuilder(new Connection());
  * */
 $routes = [
     "/" => "controllers/index.php",
+    "/hobbies" => "controllers/hobbies.php",
+    "/addHobby" => "controllers/addHobby.php",
+    "/updateHobby" => "controllers/updateHobby.php",
+    "/profiles" => "controllers/profiles.php",
     "/about" => "controllers/about.php",
     "/details" => "controllers/details.php",
     "/contact" => "controllers/contact.php",
@@ -30,9 +34,18 @@ if(array_key_exists($_SERVER['REQUEST_URI'], $routes)) {
     echo "404";
 }
 
+//$conn = new Connection();
 
 
-
-
-
-
+//$sql = "select * from users order by updated_at desc LIMIT 4";
+//
+//$stmt = $conn->conn->prepare($sql);
+//$stmt->execute();
+//$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+////foreach ($users as $user) {
+////
+////}
+//
+//require 'views/quinten.view.php';
+//
+//

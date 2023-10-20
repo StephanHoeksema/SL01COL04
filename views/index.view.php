@@ -16,15 +16,30 @@ require 'partials/nav.php';
                 foreach ($users as $user) {
                     ?>
                     <div class="feature col">
-                        <h3 class="fs-2 text-body-emphasis"><?= $user['username']; ?></h3>
-                        <p>Rose garden cucumbers mice sunflower wheat in pig. In eggplant, quonset is
-                            grain bins, grain trucks quonset pole shed, with fences gates zucchini
-                            carrots scra.</p>
+                        <h3 class="users"><?= $user['username']; ?></h3>
                         <p>
-                            Hobbies: <a href="#"> <i class="bi bi-patch-plus"> Bekijken</i></a>
+                            <?php if ($user['description'] != null) {?>
+                                <?= $user['description'];?>
+                            <?php } else { ?>
+                                Rose garden cucumbers mice sunflower wheat in pig. In eggplant, quonset is
+                                grain bins, grain trucks quonset pole shed, with fences gates zucchini
+                                carrots scra.
+                            <?php } ?>
                         </p>
                         <p>
-                            Profiel: <a href="#"><i class="bi bi-person-square"> Bewerken</i></a>
+                            <?php if ($user['hobbyId'] != null) {?>
+                            Hobbies: <a href="controllers/hobbies.php?id=<?= $user['id'] ?>"> <i class="bi bi-patch- plus"> Bekijken</i></a>
+                            <?php } else { ?>
+                            Nog geen hobby opgegeven!
+                            <?php } ?>
+                        </p>
+                        <p>
+                            <?php if ($user['profileId'] != null) {?>
+                                Profiel: <a href="controllers/profiles.php?id=<?= $user['id'] ?>"><i class="bi bi-person-square"> Bewerken</i></a>
+                            <?php } else { ?>
+                                Nog geen profiel opgegeven!
+                            <?php } ?>
+
                         </p>
 
                     </div>
